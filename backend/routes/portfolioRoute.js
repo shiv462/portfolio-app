@@ -6,8 +6,8 @@ const {
   Contact,
   Experience,
   Course,
-} = require("../models/portfolioModel");
-const User = require("../models/userModel");
+} = require("../backend/config/models/portfolioModel");
+const User = require("../backend/config/models/userModel");
 // get all portfolio data
 router.get("/get-portfolio-data", async (req, res) => {
   try {

@@ -16,6 +16,7 @@ function App() {
   const { loading, portfolioData, reloadData } = useSelector(
     (state) => state.root
   );
+
   // const [showLoading, setShowLoading] = useState(false);
   const dispatch = useDispatch();
   const getPortfolioData = async () => {
