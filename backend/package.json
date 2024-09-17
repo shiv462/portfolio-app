@@ -1,29 +1,23 @@
 {
-  "name": "mern-portfolio",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "engines": {
-    "node": "v16.20.2",
-    "npm": "8.19.4"
-  },
-  "scripts": {
-    "client-install": "npm install --prefix client",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "node server.js",
-    "build": "npm run build --prefix client"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "mongoose": "^8.5.2",
-    "nodemon": "^3.1.4"
-  },
-  "devDependencies": {
-    "concurrently": "^7.6.0"
-  }
+  "builds": [
+    {
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "client/build"
+      }
+    },
+    {
+      "src": "backend/package.json",
+      "use": "@vercel/node",
+      "config": {
+        "functions": {
+          "api/**/*.js": {
+            "memory": 1024,
+            "maxDuration": 10
+          }
+        }
+      }
+    }
+  ]
 }
